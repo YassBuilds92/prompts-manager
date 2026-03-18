@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Frontend (React + Vite)",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["frontend/node_modules/.bin/vite"],
+      "port": 5173
+    },
+    {
+      "name": "Backend API (Node.js)",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["api/server.js"],
+      "port": 3001,
+      "autoPort": false
+    }
+  ]
+}
