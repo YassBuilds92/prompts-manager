@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
 
 // MongoDB Connection String - will be set from environment variable
-const MONGODB_URI = process.env.MONGODB_URI
+// Fallback: simplified connection string without SRV records
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://yayaben92y:p6zJ7i6ca68pyLtlU@cluster0.arodi.mongodb.net/prompts-db?retryWrites=true&w=majority&authSource=admin'
 
 // Schema
 const promptSchema = new mongoose.Schema({
@@ -21,9 +22,16 @@ async function initDB() {
   }
 
   if (!mongoose.connection.readyState) {
-    await mongoose.connect(MONGODB_URI, {
-      serverSelectionTimeoutMS: 5000,
-    })
+    console.log('🔌 Connecting to MongoDB...')
+    try {
+      await mongoose.connect(MONGODB_URI, {
+        serverSelectionTimeoutMS: 5000,
+      })
+      console.log('✅ Connected to MongoDB successfully')
+    } catch (error) {
+      console.error('❌ MongoDB connection failed:', error.message)
+      throw error
+    }
   }
 
   if (!Prompt) {
