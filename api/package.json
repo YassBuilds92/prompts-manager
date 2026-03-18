@@ -1,0 +1,13 @@
+{
+  "name": "prompts-manager-api",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node prompts.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mongoose": "^7.5.0",
+    "cors": "^2.8.5"
+  }
+}

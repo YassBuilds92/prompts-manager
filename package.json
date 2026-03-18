@@ -1,0 +1,14 @@
+{
+  "name": "prompts-manager",
+  "version": "1.0.0",
+  "description": "A web app to manage your prompts with categories and cloud storage",
+  "type": "module",
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "install-all": "npm install && cd frontend && npm install && cd ../api && npm install"
+  },
+  "keywords": ["prompts", "management", "react", "mongodb"],
+  "author": "",
+  "license": "MIT"
+}
