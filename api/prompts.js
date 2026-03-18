@@ -85,8 +85,9 @@ export default async function handler(req, res) {
     }
 
     // Extract ID from URL for PUT and DELETE
-    const urlParts = req.url.split('/')
-    const promptId = urlParts[urlParts.length - 1]
+    // Vercel passes the :id param as req.query.id when using rewrites
+    const urlParts = req.url.split('?')[0].split('/')
+    const promptId = req.query?.id || urlParts[urlParts.length - 1]
 
     // PUT /api/prompts/:id - Update prompt
     if (req.method === 'PUT') {

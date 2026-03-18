@@ -8,5 +8,9 @@
       "maxDuration": 30
     }
   },
+  "rewrites": [
+    { "source": "/api/prompts/:id", "destination": "/api/prompts" },
+    { "source": "/api/prompts", "destination": "/api/prompts" }
+  ],
   "env": {}
 }
