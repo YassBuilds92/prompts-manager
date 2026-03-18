@@ -8,7 +8,5 @@
       "maxDuration": 30
     }
   },
-  "env": {
-    "MONGODB_URI": "@mongodb_uri"
-  }
+  "env": {}
 }

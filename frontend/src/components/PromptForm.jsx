@@ -30,17 +30,20 @@ export default function PromptForm({ prompt, categories, onClose, onSuccess }) {
     e.preventDefault()
     setError('')
 
-    if (!formData.title.trim() || !formData.content.trim() || !formData.category.trim()) {
+    const categoryToUse = formData.category || newCategory
+    if (!formData.title.trim() || !formData.content.trim() || !categoryToUse.trim()) {
       setError('All fields are required')
       return
     }
 
+    const dataToSave = { ...formData, category: categoryToUse }
+
     try {
       setLoading(true)
       if (prompt) {
-        await updatePrompt(prompt._id, formData)
+        await updatePrompt(prompt._id, dataToSave)
       } else {
-        await createPrompt(formData)
+        await createPrompt(dataToSave)
       }
       onSuccess()
     } catch (err) {
